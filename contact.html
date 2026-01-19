@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Linekode pour toute question sur nos formations en développement web.">
+    <title>Contact - Linekode</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Linekode</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="#" class="btn-primary open-inscription-modal">Inscrivez-vous</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header contact-header">
+        <div class="container">
+            <div class="header-badge">
+                <i class="fas fa-headset"></i>
+                <span>Support Client 24/7</span>
+            </div>
+            <h1>Parlons de Votre Projet</h1>
+            <p class="header-subtitle">Notre équipe d'experts est à votre écoute pour répondre à toutes vos questions</p>
+            <p class="header-description">Formation • Développement Web • Applications Mobiles</p>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-info-grid">
+                <a href="mailto:linekodesn@gmail.com" class="contact-info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>linekodesn@gmail.com</p>
+                </a>
+                <a href="tel:+221773525382" class="contact-info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Téléphone</h3>
+                    <p>+221 77 352 53 82</p>
+                </a>
+                <div class="contact-info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adresse</h3>
+                    <p>Saint-Louis<br>Sénégal</p>
+                </div>
+                <div class="contact-info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horaires</h3>
+                    <p>Lun - Ven: 9h00 - 18h00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form and FAQ -->
+    <section class="contact-main-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <div class="form-header">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h2>Envoyez-nous un Message</h2>
+                        <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures</p>
+                    </div>
+                    <div id="formSuccess" class="form-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Message envoyé avec succès !</strong></p>
+                        <p>Nous vous répondrons dans les plus brefs délais.</p>
+                    </div>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> Nom complet *</label>
+                                <input type="text" id="name" name="name" required placeholder="Votre nom complet">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                            </div>
+                        </div>
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-phone"></i> Téléphone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+221 77 XXX XX XX">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject"><i class="fas fa-tag"></i> Sujet *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="information">💡 Demande d'information</option>
+                                    <option value="inscription">🎓 Inscription à une formation</option>
+                                    <option value="projet">💻 Projet de développement</option>
+                                    <option value="financement">💰 Questions sur le financement</option>
+                                    <option value="autre">📋 Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment-dots"></i> Votre Message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Décrivez votre demande en détail..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full btn-contact">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer le Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- FAQ -->
+                <div class="faq-wrapper">
+                    <h2>Questions Fréquentes</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <h3>Quels sont les prérequis pour suivre une formation ?</h3>
+                            <p>Aucun prérequis technique n'est nécessaire pour nos formations débutant. Pour les formations avancées, une connaissance de base en programmation est recommandée.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Les formations sont-elles disponibles en ligne ?</h3>
+                            <p>Oui, toutes nos formations sont disponibles en ligne avec des sessions en direct et des ressources accessibles 24/7.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Proposez-vous des facilités de paiement ?</h3>
+                            <p>Oui, nous proposons des paiements échelonnés sur 3, 6 ou 12 mois sans frais. Contactez-nous pour plus d'informations.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Puis-je obtenir un emploi après la formation ?</h3>
+                            <p>Nous offrons un accompagnement à l'emploi avec préparation aux entretiens, révision de CV et mise en relation avec nos entreprises partenaires.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Notre Localisation</h2>
+            <div class="map-placeholder">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Saint-Louis</p>
+                <p>Sénégal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <span>Linekode</span>
+                    </div>
+                    <p>Votre partenaire pour une carrière réussie dans le développement web. Formations de qualité et conception de sites web et d'applications mobiles.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> linekodesn@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +221 77 352 53 82</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Linekode. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal d'inscription -->
+    <div id="inscriptionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inscription à Linekode</h2>
+                <p>Commencez votre parcours vers une carrière en développement web</p>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="inscriptionSuccess" class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Inscription réussie !</h3>
+                    <p>Merci pour votre inscription. Notre équipe vous contactera dans les 24 heures.</p>
+                    <button class="btn-primary" onclick="closeInscriptionModal()">Fermer</button>
+                </div>
+                <form id="inscriptionForm" class="modal-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                            <span class="error-message">Ce champ est requis</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                            <span class="error-message">Ce champ est requis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email_inscription">Email *</label>
+                        <input type="email" id="email_inscription" name="email" required>
+                        <span class="error-message">Email invalide</span>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                            <span class="error-message">Ce champ est requis</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Âge</label>
+                            <input type="number" id="age" name="age" min="16" max="99">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="formation">Formation souhaitée *</label>
+                        <select id="formation" name="formation" required>
+                            <option value="">Sélectionnez une formation</option>
+                            <option value="frontend">Développement Web Frontend</option>
+                            <option value="backend">Développement Web Backend</option>
+                            <option value="fullstack">Développement Full Stack</option>
+                            <option value="javascript">JavaScript Avancé</option>
+                            <option value="react">React & Next.js</option>
+                            <option value="devops">DevOps & Déploiement</option>
+                        </select>
+                        <span class="error-message">Veuillez sélectionner une formation</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="niveau">Niveau actuel *</label>
+                        <select id="niveau" name="niveau" required>
+                            <option value="">Sélectionnez votre niveau</option>
+                            <option value="debutant">Débutant (aucune expérience)</option>
+                            <option value="intermediaire">Intermédiaire (quelques bases)</option>
+                            <option value="avance">Avancé (expérience significative)</option>
+                        </select>
+                        <span class="error-message">Veuillez sélectionner votre niveau</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="motivation">Pourquoi souhaitez-vous suivre cette formation ?</label>
+                        <textarea id="motivation" name="motivation" rows="3" placeholder="Parlez-nous de vos objectifs..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="accepte_conditions" name="accepte_conditions" required>
+                            <label for="accepte_conditions">
+                                J'accepte les <a href="#" target="_blank">conditions générales</a> et la <a href="#" target="_blank">politique de confidentialité</a> *
+                            </label>
+                        </div>
+                        <span class="error-message">Vous devez accepter les conditions</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">
+                                Je souhaite recevoir des informations sur les formations et actualités de Linekode
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="inscriptionForm" class="btn-primary">
+                    <i class="fas fa-check"></i>
+                    Valider mon inscription
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

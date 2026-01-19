@@ -1,0 +1,14 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossiers IDE
+.vscode/
+.idea/
+
+# Fichiers temporaires
+*.tmp
+*.log
+
+# Dossier site pour linekode (ancien)
+site pour linekode/

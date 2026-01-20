@@ -962,8 +962,8 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 .students-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
-    margin-top: 3rem;
+    gap: 3rem;
+    margin-top: 3.5rem;
     position: relative;
     z-index: 1;
 }
@@ -1034,10 +1034,10 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 }
 
 .student-avatar {
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    margin: 2.5rem auto 1.25rem;
+    margin: 3rem auto 1.5rem;
     display: block;
     border: 6px solid transparent;
     background: linear-gradient(white, white) padding-box,
@@ -1073,8 +1073,8 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 
 .student-project-card h3 {
     text-align: center;
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.85rem;
     color: var(--gray-900);
     font-weight: 800;
     letter-spacing: -0.3px;
@@ -1123,7 +1123,7 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 .project-preview {
     position: relative;
     overflow: hidden;
-    height: 220px;
+    height: 250px;
     border-top: 2px solid rgba(59, 130, 246, 0.1);
 }
 

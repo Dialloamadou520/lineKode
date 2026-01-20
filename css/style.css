@@ -1376,32 +1376,110 @@ a {
 }
 
 .timeline-section {
-    padding: 4rem 0;
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #3b82f6 10%, 
+        #3b82f6 90%, 
+        transparent 100%);
+    transform: translateY(-50%);
+    z-index: 0;
 }
 
 .timeline-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .timeline-item {
     text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-10px);
 }
 
 .timeline-year {
-    background: var(--primary-600);
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
     color: #fff;
-    font-size: 1.25rem;
-    font-weight: bold;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    padding: 1.5rem;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+    border: 4px solid white;
+}
+
+.timeline-item:hover .timeline-year {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.5);
+}
+
+.timeline-year::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    opacity: 0;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
 }
 
 .timeline-item p {
-    font-size: 0.875rem;
-    color: var(--gray-600);
+    font-size: 0.95rem;
+    color: var(--gray-700);
+    font-weight: 500;
+    line-height: 1.5;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover p {
+    background: linear-gradient(135deg, #ffffff, #f0f9ff);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
 }
 
 .team-section {

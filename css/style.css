@@ -270,13 +270,37 @@ a {
 }
 
 .hero-features {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 2rem;
     padding: 2.5rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
     animation: float 6s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-features::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes float {
@@ -291,17 +315,38 @@ a {
 .feature-card {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
     margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 0.75rem;
-    transition: all 0.3s ease;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(180deg, #4ade80, #22c55e);
+    transform: scaleY(0);
+    transition: transform 0.4s ease;
+}
+
+.feature-card:hover::before {
+    transform: scaleY(1);
 }
 
 .feature-card:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateX(12px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 24px rgba(74, 222, 128, 0.2);
 }
 
 .feature-card:last-child {
@@ -309,16 +354,30 @@ a {
 }
 
 .feature-card i {
-    font-size: 1.75rem;
+    font-size: 2rem;
     color: #4ade80;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.75rem;
-    border-radius: 0.5rem;
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(34, 197, 94, 0.15));
+    padding: 1rem;
+    border-radius: 0.75rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.2);
+}
+
+.feature-card:hover i {
+    transform: scale(1.15) rotate(5deg);
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.3), rgba(34, 197, 94, 0.25));
+    box-shadow: 0 6px 20px rgba(74, 222, 128, 0.4);
 }
 
 .feature-card span {
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover span {
+    color: #fff;
 }
 
 /* Hero Particles */

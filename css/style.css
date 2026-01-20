@@ -527,27 +527,93 @@ a {
 /* Hero Stats */
 .hero-stats {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+}
+
+.hero-stats::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    animation: slide 3s ease-in-out infinite;
+}
+
+@keyframes slide {
+    0%, 100% {
+        left: 0;
+        width: 100px;
+    }
+    50% {
+        left: calc(100% - 100px);
+        width: 150px;
+    }
 }
 
 .hero-stat {
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.hero-stat::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 2px;
+    background: linear-gradient(135deg, #4ade80, #22c55e, #3b82f6);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hero-stat:hover::before {
+    opacity: 1;
+}
+
+.hero-stat:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3);
 }
 
 .hero-stat strong {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
     color: #fff;
+    background: linear-gradient(135deg, #fff, #4ade80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+.hero-stat:hover strong {
+    transform: scale(1.1);
 }
 
 .hero-stat span {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 /* Button Icons */

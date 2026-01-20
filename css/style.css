@@ -701,68 +701,126 @@ a {
 /* ===== Students & Projects Section ===== */
 .students-projects-section {
     padding: 5rem 0;
-    background: #fff;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.students-projects-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .students-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
     margin-top: 3rem;
+    position: relative;
+    z-index: 1;
 }
 
 .student-project-card {
     background: #fff;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.student-project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4, #8b5cf6);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.student-project-card:hover::before {
+    opacity: 1;
 }
 
 .student-project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.2);
 }
 
 .student-avatar {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin: 1.5rem auto 1rem;
+    margin: 2rem auto 1rem;
     display: block;
-    border: 4px solid var(--primary-100);
+    border: 5px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #3b82f6, #06b6d4) border-box;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+    transition: all 0.4s ease;
+    object-fit: cover;
+}
+
+.student-project-card:hover .student-avatar {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 12px 28px rgba(59, 130, 246, 0.35);
 }
 
 .student-project-card h3 {
     text-align: center;
-    font-size: 1.25rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
     color: var(--gray-900);
+    font-weight: 700;
 }
 
 .student-course {
     text-align: center;
     color: var(--primary-600);
     font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.student-project-card:hover .student-course {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: white;
+    transform: scale(1.05);
 }
 
 .project-preview {
     position: relative;
     overflow: hidden;
-    height: 200px;
+    height: 220px;
+    border-top: 2px solid rgba(59, 130, 246, 0.1);
 }
 
 .project-preview img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .student-project-card:hover .project-preview img {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .project-overlay {
@@ -770,11 +828,13 @@ a {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(to top, 
+        rgba(59, 130, 246, 0.95) 0%, 
+        rgba(6, 182, 212, 0.85) 100%);
     color: #fff;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     transform: translateY(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 .student-project-card:hover .project-overlay {
@@ -782,26 +842,39 @@ a {
 }
 
 .project-overlay h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
 }
 
 .project-overlay p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    opacity: 0.95;
+    margin-bottom: 1rem;
+    line-height: 1.5;
 }
 
 .project-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: #fff;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
 }
 
 .project-link i {
-    margin-right: 0.5rem;
+    font-size: 0.9rem;
 }
 
 /* ===== Gallery Section ===== */

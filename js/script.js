@@ -52,16 +52,31 @@ if (contactForm) {
         e.preventDefault();
         
         // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
         
-        // Log form data (in a real application, you would send this to a server)
-        console.log('Form submitted:', formData);
+        // Construire le message WhatsApp
+        let whatsappMessage = `📞 *Nouveau message de contact - Linekode*\n\n`;
+        whatsappMessage += `👤 *Nom:* ${name}\n`;
+        whatsappMessage += `📧 *Email:* ${email}\n`;
+        if (phone) whatsappMessage += `📱 *Téléphone:* ${phone}\n`;
+        whatsappMessage += `📋 *Sujet:* ${subject}\n\n`;
+        whatsappMessage += `💬 *Message:*\n${message}`;
+        
+        // Encoder le message pour l'URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Numéro WhatsApp (format international sans le +)
+        const whatsappNumber = '221773525382';
+        
+        // Créer l'URL WhatsApp
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        
+        // Ouvrir WhatsApp dans un nouvel onglet
+        window.open(whatsappURL, '_blank');
         
         // Show success message with animation
         formSuccess.style.display = 'block';

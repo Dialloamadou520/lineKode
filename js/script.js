@@ -48,7 +48,7 @@ const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form data
@@ -59,12 +59,12 @@ if (contactForm) {
         const message = document.getElementById('message').value;
         
         // Construire le message WhatsApp
-        let whatsappMessage = `📞 *Nouveau message de contact - Linekode*\n\n`;
-        whatsappMessage += `👤 *Nom:* ${name}\n`;
-        whatsappMessage += `📧 *Email:* ${email}\n`;
-        if (phone) whatsappMessage += `📱 *Téléphone:* ${phone}\n`;
-        whatsappMessage += `📋 *Sujet:* ${subject}\n\n`;
-        whatsappMessage += `💬 *Message:*\n${message}`;
+        let whatsappMessage = '📞 *Nouveau message de contact - Linekode*\n\n';
+        whatsappMessage += '👤 *Nom:* ' + name + '\n';
+        whatsappMessage += '📧 *Email:* ' + email + '\n';
+        if (phone) whatsappMessage += '📱 *Téléphone:* ' + phone + '\n';
+        whatsappMessage += '📋 *Sujet:* ' + subject + '\n\n';
+        whatsappMessage += '💬 *Message:*\n' + message;
         
         // Encoder le message pour l'URL
         const encodedMessage = encodeURIComponent(whatsappMessage);
@@ -73,29 +73,50 @@ if (contactForm) {
         const whatsappNumber = '221773525382';
         
         // Créer l'URL WhatsApp
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + encodedMessage;
         
-        // Ouvrir WhatsApp dans un nouvel onglet
-        window.open(whatsappURL, '_blank');
+        // Log pour debug
+        console.log('Opening WhatsApp with URL:', whatsappURL);
+        
+        // Ouvrir WhatsApp - essayer plusieurs méthodes
+        try {
+            // Méthode 1: window.open
+            const newWindow = window.open(whatsappURL, '_blank');
+            
+            // Si bloqué par popup blocker, essayer window.location
+            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                window.location.href = whatsappURL;
+            }
+        } catch (error) {
+            console.error('Error opening WhatsApp:', error);
+            // Fallback: redirection directe
+            window.location.href = whatsappURL;
+        }
         
         // Show success message with animation
-        formSuccess.style.display = 'block';
-        formSuccess.style.opacity = '1';
+        if (formSuccess) {
+            formSuccess.style.display = 'block';
+            formSuccess.style.opacity = '1';
+        }
         
         // Reset form
         contactForm.reset();
         
         // Scroll to success message
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (formSuccess) {
+            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
         
         // Hide success message after 5 seconds with fade out
-        setTimeout(() => {
-            formSuccess.style.transition = 'opacity 0.5s ease-out';
-            formSuccess.style.opacity = '0';
-            setTimeout(() => {
-                formSuccess.style.display = 'none';
-                formSuccess.style.transition = '';
-            }, 500);
+        setTimeout(function() {
+            if (formSuccess) {
+                formSuccess.style.transition = 'opacity 0.5s ease-out';
+                formSuccess.style.opacity = '0';
+                setTimeout(function() {
+                    formSuccess.style.display = 'none';
+                    formSuccess.style.transition = '';
+                }, 500);
+            }
         }, 5000);
     });
 }

@@ -165,10 +165,10 @@ a {
 .hero {
     background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #3b82f6 60%, #06b6d4 100%);
     color: #fff;
-    padding: 10rem 0 8rem;
+    padding: 7rem 0 5rem;
     position: relative;
     overflow: hidden;
-    min-height: 95vh;
+    min-height: auto;
     display: flex;
     align-items: center;
 }
@@ -1547,16 +1547,26 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 
 .course-card {
     background: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+}
+
+.course-card.available {
+    border: 2px solid #10b981;
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.15);
+}
+
+.course-card.available:hover {
+    box-shadow: 0 25px 50px rgba(16, 185, 129, 0.25);
 }
 
 .course-card.featured {
@@ -1633,19 +1643,64 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
     opacity: 0.7;
 }
 
-.course-header {
-    padding: 2rem;
+.page-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
     color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.page-badge i {
+    margin-right: 0.5rem;
+}
+
+.course-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.course-header {
+    padding: 2.5rem 2rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+    transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-header::before {
+    transform: translate(20%, 20%);
 }
 
 .course-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 0.5rem;
+    font-weight: 700;
+    position: relative;
 }
 
 .course-header p {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     opacity: 0.9;
+    font-weight: 500;
+    position: relative;
 }
 
 .blue-gradient {
@@ -1673,7 +1728,7 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 }
 
 .course-body {
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .course-description {
@@ -1701,14 +1756,22 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 }
 
 .course-skills ul li {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     color: var(--gray-600);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0;
+    transition: all 0.3s ease;
+}
+
+.course-skills ul li:hover {
+    transform: translateX(5px);
+    color: var(--gray-900);
 }
 
 .course-skills ul li i {
-    color: var(--green-500);
-    margin-right: 0.5rem;
+    color: #10b981;
+    margin-right: 0.75rem;
+    font-size: 1rem;
 }
 
 .course-footer {
@@ -1720,9 +1783,13 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 }
 
 .course-price {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 800;
     color: var(--primary-600);
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* ===== Learning Path ===== */
@@ -1742,17 +1809,24 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 }
 
 .step-number {
-    width: 4rem;
-    height: 4rem;
-    background: var(--primary-600);
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
     color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: bold;
-    margin: 0 auto 1rem;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    transition: all 0.4s ease;
+}
+
+.path-step:hover .step-number {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
 }
 
 .path-step h3 {

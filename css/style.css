@@ -1932,6 +1932,85 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
     line-height: 1.8;
 }
 
+.mission-cta {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+    border-radius: 1rem;
+    border-left: 4px solid #3b82f6;
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+}
+
+.mission-cta-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.mission-cta-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.mission-cta-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+}
+
+.mission-cta-content > p {
+    color: #64748b;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mission-cta-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.mission-cta-tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    background: #fff;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.mission-cta-tags span i {
+    font-size: 0.8rem;
+}
+
 .mission-features {
     background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
     padding: 2rem;

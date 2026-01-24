@@ -2033,6 +2033,7 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
     height: 10rem;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center center;
     margin: 0 auto 1.5rem;
     border: 5px solid transparent;
     background: linear-gradient(white, white) padding-box,
@@ -2045,6 +2046,10 @@ box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 .team-member:hover .member-photo {
     transform: scale(1.08) rotate(3deg);
     box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
+}
+
+.member-photo {
+    object-position: center top;
 }
 
 .team-member h3 {

@@ -75,49 +75,8 @@ if (contactForm) {
         // Créer l'URL WhatsApp
         const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + encodedMessage;
         
-        // Log pour debug
-        console.log('Opening WhatsApp with URL:', whatsappURL);
-        
-        // Ouvrir WhatsApp - essayer plusieurs méthodes
-        try {
-            // Méthode 1: window.open
-            const newWindow = window.open(whatsappURL, '_blank');
-            
-            // Si bloqué par popup blocker, essayer window.location
-            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-                window.location.href = whatsappURL;
-            }
-        } catch (error) {
-            console.error('Error opening WhatsApp:', error);
-            // Fallback: redirection directe
-            window.location.href = whatsappURL;
-        }
-        
-        // Show success message with animation
-        if (formSuccess) {
-            formSuccess.style.display = 'block';
-            formSuccess.style.opacity = '1';
-        }
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Scroll to success message
-        if (formSuccess) {
-            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        
-        // Hide success message after 5 seconds with fade out
-        setTimeout(function() {
-            if (formSuccess) {
-                formSuccess.style.transition = 'opacity 0.5s ease-out';
-                formSuccess.style.opacity = '0';
-                setTimeout(function() {
-                    formSuccess.style.display = 'none';
-                    formSuccess.style.transition = '';
-                }, 500);
-            }
-        }, 5000);
+        // Redirection directe vers WhatsApp
+        window.location.href = whatsappURL;
     });
 }
 

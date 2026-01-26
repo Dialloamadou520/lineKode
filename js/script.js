@@ -73,10 +73,10 @@ if (contactForm) {
         const whatsappNumber = '221773525382';
         
         // Créer l'URL WhatsApp
-        const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + encodedMessage;
+        const whatsappURL = 'https://api.whatsapp.com/send?phone=' + whatsappNumber + '&text=' + encodedMessage;
         
-        // Redirection directe vers WhatsApp
-        window.location.href = whatsappURL;
+        // Ouvrir WhatsApp dans un nouvel onglet
+        window.open(whatsappURL, '_blank');
     });
 }
 
@@ -348,8 +348,8 @@ if (inscriptionForm) {
             // Numéro WhatsApp (format international sans le +)
             const whatsappNumber = '221773525382';
             
-            // Créer l'URL WhatsApp
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            // Créer l'URL WhatsApp (api.whatsapp.com est plus fiable)
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
             
             // Ouvrir WhatsApp dans un nouvel onglet
             window.open(whatsappURL, '_blank');

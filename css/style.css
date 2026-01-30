@@ -133,7 +133,7 @@ a {
 }
 
 .btn-secondary {
-    background: transparent;
+    background: #10b981;
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
@@ -144,8 +144,8 @@ a {
 }
 
 .btn-secondary:hover {
-    background: #fff;
-    color: var(--primary-600);
+    background: #059669;
+    color: #fff;
 }
 
 .btn-white {

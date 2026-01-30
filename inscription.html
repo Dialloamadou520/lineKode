@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inscrivez-vous à nos formations en développement web - Linekode">
+    <title>Inscription - Linekode</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .inscription-section {
+            padding: 80px 0;
+            min-height: calc(100vh - 200px);
+        }
+        .inscription-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .inscription-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .inscription-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .inscription-header p {
+            opacity: 0.9;
+        }
+        .inscription-body {
+            padding: 40px;
+        }
+        .inscription-form .form-group {
+            margin-bottom: 20px;
+        }
+        .inscription-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .inscription-form input,
+        .inscription-form select,
+        .inscription-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .inscription-form input:focus,
+        .inscription-form select:focus,
+        .inscription-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .inscription-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .inscription-form .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .inscription-form .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 4px;
+        }
+        .inscription-form .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+        .inscription-form .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        .inscription-form .form-group.error .error-message {
+            display: block;
+        }
+        .inscription-form .form-group.error input,
+        .inscription-form .form-group.error select {
+            border-color: #e74c3c;
+        }
+        .inscription-form button[type="submit"] {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        .success-message {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+        .success-message.show {
+            display: block;
+        }
+        .success-message i {
+            font-size: 4rem;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+        .success-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        .success-message p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .inscription-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            .inscription-header,
+            .inscription-body {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Linekode</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="inscription.html" class="btn-primary active">Inscrivez-vous</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <span class="page-badge"><i class="fas fa-user-plus"></i> Rejoignez-nous</span>
+            <h1>Inscription à Linekode</h1>
+            <p>Commencez votre parcours vers une carrière en développement web</p>
+        </div>
+    </section>
+
+    <!-- Inscription Section -->
+    <section class="inscription-section">
+        <div class="container">
+            <div class="inscription-container">
+                <div class="inscription-body">
+                    <div id="inscriptionSuccess" class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Inscription réussie !</h3>
+                        <p>Merci pour votre inscription. Notre équipe vous contactera dans les 24 heures.</p>
+                        <a href="index.html" class="btn-primary">Retour à l'accueil</a>
+                    </div>
+                    <form id="inscriptionForm" class="inscription-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prenom">Prénom *</label>
+                                <input type="text" id="prenom" name="prenom" required>
+                                <span class="error-message">Ce champ est requis</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="nom">Nom *</label>
+                                <input type="text" id="nom" name="nom" required>
+                                <span class="error-message">Ce champ est requis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email_inscription">Email *</label>
+                            <input type="email" id="email_inscription" name="email" required>
+                            <span class="error-message">Email invalide</span>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telephone">Téléphone *</label>
+                                <input type="tel" id="telephone" name="telephone" required>
+                                <span class="error-message">Ce champ est requis</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Âge</label>
+                                <input type="number" id="age" name="age" min="16" max="99">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="formation">Formation souhaitée *</label>
+                            <select id="formation" name="formation" required>
+                                <option value="">Sélectionnez une formation</option>
+                                <option value="frontend">Développement Web Frontend</option>
+                                <option value="backend">Développement Web Backend</option>
+                            </select>
+                            <span class="error-message">Veuillez sélectionner une formation</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="niveau">Niveau actuel *</label>
+                            <select id="niveau" name="niveau" required>
+                                <option value="">Sélectionnez votre niveau</option>
+                                <option value="debutant">Débutant (aucune expérience)</option>
+                                <option value="intermediaire">Intermédiaire (quelques bases)</option>
+                                <option value="avance">Avancé (expérience significative)</option>
+                            </select>
+                            <span class="error-message">Veuillez sélectionner votre niveau</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivation">Pourquoi souhaitez-vous suivre cette formation ?</label>
+                            <textarea id="motivation" name="motivation" rows="3" placeholder="Parlez-nous de vos objectifs..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="accepte_conditions" name="accepte_conditions" required>
+                                <label for="accepte_conditions">
+                                    J'accepte les <a href="#" target="_blank">conditions générales</a> et la <a href="#" target="_blank">politique de confidentialité</a> *
+                                </label>
+                            </div>
+                            <span class="error-message">Vous devez accepter les conditions</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <label for="newsletter">
+                                    Je souhaite recevoir des informations sur les formations et actualités de Linekode
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-check"></i>
+                            Valider mon inscription
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <span>Linekode</span>
+                    </div>
+                    <p>Votre partenaire pour une carrière réussie dans le développement web. Formations de qualité et conception de sites web et d'applications mobiles.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> linekodesn@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +221 77 352 53 82</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linekode. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js?v=2"></script>
+    <script>
+        // Inscription form handling
+        document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const requiredFields = this.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                const formGroup = field.closest('.form-group');
+                if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+                    if (formGroup) formGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    if (formGroup) formGroup.classList.remove('error');
+                }
+            });
+            
+            if (isValid) {
+                // Save to localStorage for admin
+                const formData = {
+                    prenom: document.getElementById('prenom').value,
+                    nom: document.getElementById('nom').value,
+                    email: document.getElementById('email_inscription').value,
+                    telephone: document.getElementById('telephone').value,
+                    age: document.getElementById('age').value,
+                    formation: document.getElementById('formation').value,
+                    niveau: document.getElementById('niveau').value,
+                    motivation: document.getElementById('motivation').value,
+                    newsletter: document.getElementById('newsletter').checked,
+                    status: 'pending',
+                    date: new Date().toISOString(),
+                    id: Date.now()
+                };
+                
+                let inscriptions = JSON.parse(localStorage.getItem('linekode_inscriptions') || '[]');
+                inscriptions.unshift(formData);
+                localStorage.setItem('linekode_inscriptions', JSON.stringify(inscriptions));
+                
+                this.style.display = 'none';
+                document.getElementById('inscriptionSuccess').classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>

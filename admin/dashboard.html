@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Admin Linekode</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Linekode</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Tableau de bord</span>
+                </a>
+                <a href="inscriptions.html" class="nav-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Inscriptions</span>
+                </a>
+                <a href="../index.html" class="nav-item">
+                    <i class="fas fa-globe"></i>
+                    <span>Voir le site</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="admin-header">
+                <h1>Tableau de bord</h1>
+                <div class="header-actions">
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Déconnexion
+                    </button>
+                </div>
+            </header>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h3>Total Inscriptions</h3>
+                        <div class="stat-icon primary">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="totalInscriptions">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h3>En attente</h3>
+                        <div class="stat-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="pendingInscriptions">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h3>Approuvées</h3>
+                        <div class="stat-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="approvedInscriptions">0</div>
+                </div>
+            </div>
+
+            <!-- Recent Inscriptions Table -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h2>Inscriptions récentes</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Rechercher..." onkeyup="filterTable()">
+                    </div>
+                </div>
+                <div id="tableContent">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nom complet</th>
+                                <th>Email</th>
+                                <th>Téléphone</th>
+                                <th>Formation</th>
+                                <th>Niveau</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inscriptionsTable">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Aucune inscription</h3>
+                    <p>Les nouvelles inscriptions apparaîtront ici</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+    <script>
+        checkAuth();
+        
+        // Ajouter des données de test si vide
+        function addTestData() {
+            let inscriptions = JSON.parse(localStorage.getItem('linekode_inscriptions') || '[]');
+            if (inscriptions.length === 0) {
+                const testData = [
+                    {
+                        id: Date.now(),
+                        prenom: 'Amadou',
+                        nom: 'Diallo',
+                        email: 'amadou@example.com',
+                        telephone: '+221 77 123 45 67',
+                        formation: 'frontend',
+                        niveau: 'debutant',
+                        motivation: 'Je veux apprendre le développement web',
+                        status: 'pending',
+                        date: new Date().toISOString()
+                    }
+                ];
+                localStorage.setItem('linekode_inscriptions', JSON.stringify(testData));
+            }
+        }
+        
+        addTestData();
+        loadDashboard();
+    </script>
+</body>
+</html>

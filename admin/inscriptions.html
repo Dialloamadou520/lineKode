@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscriptions - Admin Linekode</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Linekode</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Tableau de bord</span>
+                </a>
+                <a href="inscriptions.html" class="nav-item active">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Inscriptions</span>
+                </a>
+                <a href="../index.html" class="nav-item">
+                    <i class="fas fa-globe"></i>
+                    <span>Voir le site</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="admin-header">
+                <h1>Gestion des Inscriptions</h1>
+                <div class="header-actions">
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Déconnexion
+                    </button>
+                </div>
+            </header>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs" style="margin-bottom: 20px;">
+                <button class="filter-btn active" onclick="filterByStatus('all')">Toutes</button>
+                <button class="filter-btn" onclick="filterByStatus('pending')">En attente</button>
+                <button class="filter-btn" onclick="filterByStatus('approved')">Approuvées</button>
+                <button class="filter-btn" onclick="filterByStatus('rejected')">Rejetées</button>
+            </div>
+
+            <!-- Inscriptions Table -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h2>Liste des inscriptions</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Rechercher..." onkeyup="filterTable()">
+                    </div>
+                </div>
+                <div id="tableContent">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Nom complet</th>
+                                <th>Email</th>
+                                <th>Téléphone</th>
+                                <th>Formation</th>
+                                <th>Niveau</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inscriptionsTable">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Aucune inscription</h3>
+                    <p>Les nouvelles inscriptions apparaîtront ici</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <style>
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            background: var(--admin-white);
+            color: var(--admin-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--admin-shadow);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--admin-primary);
+            color: var(--admin-white);
+        }
+    </style>
+
+    <script src="admin.js"></script>
+    <script>
+        checkAuth();
+        loadInscriptions();
+    </script>
+</body>
+</html>

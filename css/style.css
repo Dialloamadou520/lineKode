@@ -98,6 +98,14 @@ a {
     color: var(--primary-600);
 }
 
+.nav-menu .btn-primary {
+    color: #fff !important;
+}
+
+.nav-menu .btn-primary:hover {
+    color: #fff !important;
+}
+
 .mobile-menu-toggle {
     display: none;
     background: none;

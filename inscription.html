@@ -307,6 +307,13 @@
 
     <script src="js/script.js?v=2"></script>
     <script>
+        // Pré-remplir la formation depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const formationParam = urlParams.get('formation');
+        if (formationParam) {
+            document.getElementById('formation').value = formationParam;
+        }
+        
         // Inscription form handling
         document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
             e.preventDefault();
